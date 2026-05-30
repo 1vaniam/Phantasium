@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "phantasm",
+  "version": "${version}",
+  "name": "Phantasium",
+  "description": "Client-side optimization mod for servers using ModelEngine, ItemsAdder, and Oraxen.",
+  "icon": "icon.png",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.phantasm.PhantasmClient"
+    ]
+  },
+  "mixins": [
+    "phantasm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "fabric-api": "*",
+    "minecraft": "~1.21.11"
+  }
+}

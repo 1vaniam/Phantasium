@@ -1,0 +1,35 @@
+{
+  "required": true,
+  "package": "dev.phantasm.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "MixinWorldRenderer",
+    "MixinShouldRender",
+    "MixinItemFrameCulling",
+    "MixinShadowRenderer",
+    "MixinLabelSkip",
+    "MixinIsPushable",
+    "MixinNetworkHandlerPassengers",
+    "MixinNetworkHandlerEntities",
+    "MixinNetworkHandlerPositionSync",
+    "MixinNetworkHandlerTrackerUpdate",
+    "MixinHitboxSkip",
+    "MixinMipmapSkip",
+    "MixinAtlasReloadParallel",
+    "MixinSpriteLoaderSkip",
+    "MixinInGameHud",
+    "MixinTextRenderer",
+    "MixinF3Overlay",
+    "MixinParticleSuppression",
+    "MixinResourcePackApply",
+    "MixinBlockModelShaper",
+    "MixinBitmapFont",
+    "MixinBoneRenderStateEarlyExit",
+    "MixinItemDisplayTransform",
+    "MixinEntityRenderState",
+    "MixinEntityRendererUpdateState"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
