@@ -4,11 +4,7 @@ import net.minecraft.entity.decoration.DisplayEntity;
 
 import java.util.concurrent.ConcurrentHashMap;
 
-/*ItemDisplay transform cache
-
- Caches the DisplayEntity.RenderState (an immutable record) per entity ID
- Invalidated by MixinNetworkHandlerTrackerUpdate on every SetEntityData packet,
- ensuring stale transforms are never used after an update*/
+/*ItemDisplay transform cache*/
 public final class DisplayTransformCache {
 
     private static final DisplayTransformCache INSTANCE = new DisplayTransformCache();

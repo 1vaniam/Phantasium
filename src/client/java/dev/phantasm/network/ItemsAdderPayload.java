@@ -5,9 +5,9 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.util.Identifier;
 
-/**
- * Registers the itemsadder:channel so the server knows we speak ItemsAdder's protocol.
- * Receiving any packet on this channel confirms ItemsAdder is installed server-side.
+/*
+ egisters the itemsadder:channel so the server knows we speak ItemsAdder's protocol
+ Receiving any packet on this channel confirms ItemsAdder is installed server-side
  */
 public record ItemsAdderPayload(PacketByteBuf data) implements CustomPayload {
 

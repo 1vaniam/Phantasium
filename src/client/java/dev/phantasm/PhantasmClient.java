@@ -28,8 +28,6 @@ public class PhantasmClient implements ClientModInitializer {
         PhantasmConfig.load();
 
         // da ModelEngine bulk_data
-        // This is the one real channel ME sends used for transform sync
-        // Receiving it also confirms ME is active (detectModelEngine called in handler).
         PayloadTypeRegistry.playS2C().register(BulkEntityDataPayload.ID, BulkEntityDataPayload.CODEC);
         ClientPlayNetworking.registerGlobalReceiver(BulkEntityDataPayload.ID, (payload, ctx) -> {
             ServerPluginDetector.get().detectModelEngine();
@@ -41,7 +39,6 @@ public class PhantasmClient implements ClientModInitializer {
         // ServerPluginDetector.hasOraxen() / hasItemsAdder() / hasNexo() which
         // check FurnitureRegistry for confirmed furniture with the matching source tag
 
-        // IO1: evict pending furniture entities that never received SetEntityData
         net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(client -> {
             if (client.world != null) {
                 FurnitureRegistry.get().evictStalePending(client.world.getTime());

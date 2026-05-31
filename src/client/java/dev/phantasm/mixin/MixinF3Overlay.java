@@ -15,9 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 
 /*
- * F3 diagnostic overlay.
- * Guards against duplicate appends (VulkanMod calls drawText twice per frame)
- */
+F3 diagnostic overlay
+*/
 @Mixin(DebugHud.class)
 public abstract class MixinF3Overlay {
 
@@ -30,7 +29,6 @@ public abstract class MixinF3Overlay {
         if (!PhantasmConfig.get().enableF3Overlay) return;
         if (!MinecraftClient.getInstance().getDebugHud().shouldShowDebugHud()) return;
 
-        // Guard don't append if already present (VulkanMod double-calls drawText)
         for (String line : text) {
             if (line != null && line.startsWith(MARKER)) return;
         }
@@ -39,8 +37,6 @@ public abstract class MixinF3Overlay {
         ModelEngineRegistry me  = ModelEngineRegistry.get();
         FurnitureRegistry fur   = FurnitureRegistry.get();
 
-        // Use raw latched flags - the has*() methods have entity-detection side effects
-        // and also read non-thread-safe registry state (getBoneCount on a fastutil map)
         boolean hasME = det.isModelEngineLatched();
         boolean hasIA = det.isItemsAdderLatched();
         boolean hasOX = det.isOraxenLatched();
@@ -57,8 +53,10 @@ public abstract class MixinF3Overlay {
         text.add(plugins.toString());
         int furnitureCulled = fur.getAndResetCulled();
         int totalCulled = me.getServerCulledCount() + furnitureCulled;
+        int backfaceCulled = dev.phantasm.cache.BackfaceCullCounter.getAndReset();
         text.add(MARKER + " bones: " + me.getBoneCount()
-                 + "  culled: " + totalCulled);
+                 + "  culled: " + totalCulled
+                 + "  backface: " + backfaceCulled);
         text.add(MARKER + " furniture: " + fur.getFurnitureCount());
         text.add(MARKER + " close-dist: " + (int) dev.phantasm.config.PhantasmConfig.get().closeDistanceBlocks + "b");
     }

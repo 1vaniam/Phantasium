@@ -2,10 +2,7 @@ package dev.phantasm.util;
 
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 
-/*
- Shared registry for pua codepoint tracking (NX3,NX4, IO4)
- Extracted from MixinTextRenderer to avoid non-private static methods in Mixins
- */
+
 public final class PuaCodepointRegistry {
 
     public static final int PUA_START = 0xE000;

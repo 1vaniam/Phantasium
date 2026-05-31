@@ -23,7 +23,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 /*
  IO1 - Stage furniture candidates from AddEntity packets
  IO1b - Upgrade source tag from equipment packets
- Cleanup - RemoveEntities clears all registries.
+ Cleanup - RemoveEntities clears all registries
  */
 @Mixin(ClientPlayNetworkHandler.class)
 public abstract class MixinNetworkHandlerEntities {

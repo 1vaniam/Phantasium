@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/*TX4 — ItemDisplay transform cache*/
+
 @Mixin(targets = "net.minecraft.client.render.entity.DisplayEntityRenderer")
 public abstract class MixinItemDisplayTransform {
 

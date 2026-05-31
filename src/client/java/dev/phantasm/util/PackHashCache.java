@@ -13,9 +13,9 @@ import java.util.HexFormat;
 import java.util.UUID;
 
 /**
- * (TX3) Server resource pack skip cache.
- * File: config/phantasm_pack_cache.txt
- * Format: single line "<fingerprintHex>"
+ (TX3) Server resource pack skip cache.
+ File: config/phantasm_pack_cache.txt
+ Format: single line "<fingerprintHex>"
  */
 public final class PackHashCache {
 

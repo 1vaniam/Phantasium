@@ -1,6 +1,5 @@
 package dev.phantasm.mixin;
 
-import dev.phantasm.PhantasmClient;
 import dev.phantasm.config.PhantasmConfig;
 import dev.phantasm.util.AtlasDiskCache;
 import dev.phantasm.util.PackHashCache;
@@ -16,9 +15,6 @@ import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
-/*
- TX5 - Skip SpriteLoader filesystem scan when atlas disk cache is valid
-*/
 @Mixin(SpriteLoader.class)
 public abstract class MixinSpriteLoaderSkip {
 
@@ -34,14 +30,6 @@ public abstract class MixinSpriteLoaderSkip {
             Executor executor,
             Set<?> additionalMetadata,
             CallbackInfoReturnable<CompletableFuture<SpriteLoader.StitchResult>> cir) {
-
-        if (!PhantasmConfig.get().enableAtlasDiskCache) return;
-        if (!PackHashCache.isCurrentPackUnchanged())    return;
-        if (!AtlasDiskCache.isCacheHit())               return;
-
-        PhantasmClient.LOGGER.debug(
-            "[Phantasm] TX5 SpriteLoader scan skipped for atlas: {}", id);
-
-        cir.setReturnValue(CompletableFuture.completedFuture(null));
+        // TX5 intentionally disabled — see class comment above.
     }
 }

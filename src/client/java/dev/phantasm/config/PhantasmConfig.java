@@ -30,21 +30,9 @@ public final class PhantasmConfig {
     public volatile boolean enablePackHashSkip        = true;
     public volatile boolean enableAtlasDiskCache      = true;
 
+    public volatile boolean enableBackFaceCulling     = true;
+
     //Cull distance
-    /**
-     * Entities closer than this distance (in blocks) skip back-angle and
-     * occlusion culling entirely. only frustum culling applies.
-     *
-     * Presets:
-     *   LOW    =  8  (aggressive, better performance, may pop on fast movement)
-     *   MEDIUM = 16  (recommended default)
-     *   HIGH   = 32  (conservative, more culling safety margin)
-     *   ULTRA  = 64  (minimal culling, for very high-end systems)
-     *   OFF    = 128 (effectively disables close-range safety guard)
-     *
-     * volatile: double writes are not atomic on 32-bit JVMs; volatile ensures a
-     * consistent 64-bit read from the render thread.
-     */
     public volatile double closeDistanceBlocks = 16.0;
 
     //LOD settings
@@ -107,6 +95,7 @@ public final class PhantasmConfig {
         dst.enableParallelSpriteLoad  = src.enableParallelSpriteLoad;
         dst.enablePackHashSkip        = src.enablePackHashSkip;
         dst.enableAtlasDiskCache      = src.enableAtlasDiskCache;
+        dst.enableBackFaceCulling     = src.enableBackFaceCulling;
         dst.closeDistanceBlocks       = src.closeDistanceBlocks;
         dst.lodDistanceBlocks         = src.lodDistanceBlocks;
         dst.lodSkipTicks              = src.lodSkipTicks;

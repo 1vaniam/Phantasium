@@ -2,7 +2,6 @@ package dev.phantasm.registry;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 
-/*IO1 — Furniture entity registry for ItemsAdder, Oraxen, Nexo, and generic custom-model entities*/
 public final class FurnitureRegistry {
 
     public enum Source { ORAXEN, ITEMS_ADDER, NEXO, GENERIC }

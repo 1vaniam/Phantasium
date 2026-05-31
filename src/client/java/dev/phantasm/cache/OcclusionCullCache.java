@@ -4,9 +4,7 @@ import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 
 import java.util.concurrent.locks.StampedLock;
 
-/*S3 - Async occlusion cull results.
- Background threads write occluded entity IDs here; shouldRender reads them
- Results are intentionally 1-2 frames stale. imperceptible in practice*/
+/*S3 - Async occlusion cull results*/
 public final class OcclusionCullCache {
 
     private static final OcclusionCullCache INSTANCE = new OcclusionCullCache();

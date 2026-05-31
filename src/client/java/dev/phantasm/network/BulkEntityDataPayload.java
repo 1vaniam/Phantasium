@@ -5,11 +5,6 @@ import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.util.Identifier;
 
-/*
- Payload for the modelengine:bulk_data channel
- The server sends a single packet containing transform data for all ME bone entities
- encoded with half-precision floats to cut bandwidth roughly in half
-*/
 public record BulkEntityDataPayload(PacketByteBuf data) implements CustomPayload {
 
     public static final byte PACKET_TYPE_BULK_DATA = 0x00;

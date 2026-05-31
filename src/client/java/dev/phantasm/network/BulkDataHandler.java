@@ -29,9 +29,6 @@ public final class BulkDataHandler {
         mc.execute(() -> apply(mc, entries));
     }
 
-    /** Reusable decode buffer = eliminates one Object[8] allocation per bone per packet */
-    private static final ThreadLocal<Object[]> DECODE_BUF = ThreadLocal.withInitial(() -> new Object[8]);
-
     private record BoneEntry(int entityId, byte bitmask, Object[] fields) {}
 
     private static BoneEntry[] decode(PacketByteBuf buf) {
@@ -47,9 +44,7 @@ public final class BulkDataHandler {
         for (int i = 0; i < count; i++) {
             int entityId = buf.readVarInt();
             byte bitmask = buf.readByte();
-            Object[] fields = DECODE_BUF.get();
-            // Clear only slots that may have been written by a previous bone in a different packet
-            java.util.Arrays.fill(fields, null);
+            Object[] fields = new Object[8];
 
             if (hasBit(bitmask, BulkEntityDataPayload.FIELD_TRANSLATION))
                 fields[BulkEntityDataPayload.FIELD_TRANSLATION] = readHalfVec3(buf);
